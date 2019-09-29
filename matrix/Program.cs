@@ -8,9 +8,9 @@ namespace matrix
         {
             try
             {
-                Matrix m1 = new Matrix(3, 3);
-                Matrix m2 = new Matrix(3, 3);
-                Matrix m3 = m1 - m2;
+                Matrix m1 = new Matrix(3, 3, true);
+                Matrix m2 = new Matrix(3, 1, true);
+                Matrix m3 = m1*m2;
                 m1.Print();
                 Console.WriteLine("---------------------------");
                 m2.Print();

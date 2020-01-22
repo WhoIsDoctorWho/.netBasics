@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Get beer";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generate order</title>
+</head>
+<body>
+    <div>
+        <h3>Fill the form</h3>        
+        <form action="~/Home/GenerateOrder" method="post">
+            <input type="hidden" value="@ViewBag.BeerId" name="BeerId" />
+            <table>
+                <tr>
+                    <td>Name:</td>
+                    <td><input type="text" name="User" /> </td>
+                </tr>
+                <tr>
+                    <td>Address:</td>
+                    <td><input type="text" name="Address" /></td>
+                </tr>
+                <tr>
+                    <td>Contact phone:</td>
+                    <td><input type="text" name="ContactPhone" /></td>
+                </tr>
+                <tr><td><input type="submit" value="Send" /> </td><td></td></tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>

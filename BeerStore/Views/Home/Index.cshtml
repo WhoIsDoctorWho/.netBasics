@@ -1,0 +1,31 @@
+﻿@model IEnumerable<BeerStore.Models.Beer>
+@{
+    ViewData["Title"] = "Beer store";    
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Beer store</title>
+</head>
+<body>
+    <h3>Beer</h3>
+    <table>
+        <tr>
+            <td>Name</td>
+            <td>Description</td>
+            <td>Price</td>
+            <td></td>
+        </tr>
+        @foreach (var beer in Model)
+        {
+            <tr>
+                <td>@beer.Name</td>
+                <td>@beer.Description</td>
+                <td>@beer.Price</td>
+                <td><a href="~/Home/Buy/@beer.id">Купить</a></td>
+            </tr>
+        }
+    </table>
+</body>
+</html>

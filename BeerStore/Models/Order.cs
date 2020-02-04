@@ -11,8 +11,8 @@ namespace BeerStore.Models
         public string User { get; set; }
         public string Address { get; set; }
         public string ContactPhone { get; set; }
-        public int BeerId { get; set; }
+        public List<ShopListItem> BeerIds { get; set; }
 
-        public Beer Beer;
+        public List<Beer> Beer;
     }
 }

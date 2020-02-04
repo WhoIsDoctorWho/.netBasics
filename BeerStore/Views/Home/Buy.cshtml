@@ -11,7 +11,10 @@
     <div>
         <h3>Fill the form</h3>        
         <form action="~/Home/GenerateOrder" method="post">
-            <input type="hidden" value="@ViewBag.BeerId" name="BeerId" />
+            @foreach (var BeerId in ViewBag.BeerIds)
+            {
+                <input type="hidden" name="BeerIds" value="@BeerId" />
+            }
             <table>
                 <tr>
                     <td>Name:</td>

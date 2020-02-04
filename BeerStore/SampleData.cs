@@ -8,35 +8,79 @@ namespace BeerStore
 {
     public class SampleData
     {
-        public static void Initialize(BeerContext context)
+        public static void Initialize(BeerStoreContext context)
         {
-            if(!context.Beers.Any())
+            bool isBeers = context.Beers.Any();
+            bool isUsers = context.Users.Any();
+            bool anyChanges = false;
+            if (!isBeers) {
+                GenerateBeers(context);
+                anyChanges = true;
+            }
+            if(!isUsers)
             {
-                context.Beers.AddRange(
+                GenerateUsers(context);
+                anyChanges = true;
+            }
+            if (anyChanges)
+                context.SaveChanges();
+            
+        }
+        private static void GenerateBeers(BeerStoreContext context)
+        {
+            context.Beers.AddRange(
                     new Beer
                     {
                         Name = "Obolonske",
                         Description = "Strong",
-                        ImageURL = "img",
+                        ImageUrl = "img",
                         Price = 12
                     },
                     new Beer
                     {
                         Name = "Cool lager",
                         Description = "Light",
-                        ImageURL = "img",
+                        ImageUrl = "img",
                         Price = 15
                     },
                     new Beer
                     {
                         Name = "Beer mix",
                         Description = "Lemon",
-                        ImageURL = "img",
+                        ImageUrl = "img",
                         Price = 18
                     }
                 );
-                context.SaveChanges();
-            }
         }
+        private static void GenerateUsers(BeerStoreContext context)
+        {
+            context.Users.AddRange(
+                    new User
+                    {
+                        Fullname = "Dima Timcnkko",                        
+                        AvaUrl = "img",
+                        Registered = DateTime.Now,
+                        Login = "timchnk",
+                        Password = "Cucumber2000"                        
+                    },
+                    new User
+                    {
+                        Fullname = "Tanya Protas",
+                        AvaUrl = "img",
+                        Registered = DateTime.Now,
+                        Login = "TB",
+                        Password = "zhopa"
+                    },
+                    new User
+                    {
+                        Fullname = "Andrey Goncharenko",
+                        AvaUrl = "img",
+                        Registered = DateTime.Now,
+                        Login = "Goncharik",
+                        Password = "whatisgivence"
+                    }
+                );
+        }
+
     }
 }

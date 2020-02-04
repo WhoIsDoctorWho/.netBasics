@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewData["Title"] = "_FilterEntity";
+}
+
+<a asp-action="Beers" asp-route-sortOrder="@ViewBag.NameSort">
+    By name
+</a>    
+<a asp-action="Beers" asp-route-sortOrder="@ViewBag.PriceSort">
+    By price
+</a>
+

@@ -22,7 +22,7 @@ namespace BeerStore
 
                 try
                 {
-                    var context = services.GetRequiredService<BeerContext>();
+                    var context = services.GetRequiredService<BeerStoreContext>();
                     SampleData.Initialize(context);
                 }
                 catch (Exception ex)

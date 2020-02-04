@@ -26,7 +26,7 @@ namespace BeerStore
         public void ConfigureServices(IServiceCollection services)
         {
             string connection = Configuration.GetConnectionString("DefaultConnection");
-            services.AddDbContext<BeerContext>(options => options.UseSqlServer(connection));
+            services.AddDbContext<BeerStoreContext>(options => options.UseSqlServer(connection));
             services.AddControllersWithViews();
         }
 

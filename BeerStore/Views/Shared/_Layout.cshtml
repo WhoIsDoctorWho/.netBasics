@@ -5,14 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="icon" type="image/x-icon" href="~/beer_icon.ico">
 </head>
 <body>
     <!--меню-->
     <nav class="navbar navbar-inverse">
         <div class="container">
             <div>
-                <ul class="nav navbar-nav">
-                    <li><a href="~/Home/Index" class="navbar-brand">Главная</a></li>
+                <ul class="d-inline-block nav navbar-nav">
+                    <li class="list-inline-item"><a href="~/Home/Index" class="navbar-brand">Home</a></li>
+                    <li class="list-inline-item"><a href="~/Product/Beers" class="navbar-brand">Beers</a></li>
+                    <li class="list-inline-item"><a href="~/Product/Create" class="navbar-brand">Add</a></li>
+                    <li class="list-inline-item"><a href="~/User/Users" class="navbar-brand">Users</a></li>
+                    <li class="list-inline-item"><a href="~/User/Register" class="navbar-brand">Register</a></li>
                 </ul>
             </div>
         </div>

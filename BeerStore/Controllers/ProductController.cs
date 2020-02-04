@@ -1,19 +1,21 @@
-﻿using System.Linq;
-using Microsoft.AspNetCore.Mvc;
+﻿using System.Collections.Generic;
+using System.Linq;
 using BeerStore.Models;
-using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BeerStore.Controllers
 {
-    public class HomeController : Controller
+    public class ProductController : Controller
     {
-        BeerStoreContext db;
-        public HomeController(BeerStoreContext context)
+        BeerStoreContext db;        
+        public ProductController(BeerStoreContext context)
         {
             db = context;
-        }
-        public IActionResult Index(SortState sortOrder = SortState.NameAsc)
+        }        
+        public IActionResult Beers(int ? id, SortState sortOrder = SortState.NameAsc)
         {
+            if(id != null)
+                return View("Beer", db.Beers.Find(id));
             List<Beer> beers = db.Beers.ToList();
             ViewData["NameSort"] = sortOrder == SortState.NameAsc ? SortState.NameDesc : SortState.NameAsc;
             ViewData["PriceSort"] = sortOrder == SortState.PriceAsc ? SortState.PriceDesc : SortState.PriceAsc;
@@ -25,26 +27,22 @@ namespace BeerStore.Controllers
                 _ => beers.OrderBy(beer => beer.Name),
             };
             return View(sortedBeers.ToList());
-
+        }
+        public IActionResult __Beers(int id)
+        {
+            return View("Beer", db.Beers.Find(id));
+        }
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View("New");
         }
         [HttpPost]
-        public IActionResult Buy(int[] BeerIds)
+        public IActionResult Create(Beer beer)
         {
-            if (BeerIds == null || BeerIds.Length == 0)
-                return RedirectToAction("Index");
-            ViewBag.BeerIds = BeerIds;
-            return View();
-        }
-        [HttpPost]
-        public string GenerateOrder(Order order, List<int> BeerIds)
-        {
-            foreach(var id in BeerIds)
-            {
-                order.BeerIds.Add(new ShopListItem() { ItemId = id });
-            }
-            db.Orders.Add(order);
+            db.Beers.Add(beer);
             db.SaveChanges();
-            return "Thanks" + order.User;
+            return RedirectToActionPermanent("Beers");
         }
     }
 }

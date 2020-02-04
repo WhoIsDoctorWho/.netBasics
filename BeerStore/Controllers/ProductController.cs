@@ -2,6 +2,7 @@
 using System.Linq;
 using BeerStore.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace BeerStore.Controllers
 {
@@ -12,11 +13,14 @@ namespace BeerStore.Controllers
         {
             db = context;
         }        
-        public IActionResult Beers(int ? id, SortState sortOrder = SortState.NameAsc)
+        public IActionResult Beers(int ? id, string toSearch, SortState sortOrder = SortState.NameAsc)
         {
             if(id != null)
                 return View("Beer", db.Beers.Find(id));
-            List<Beer> beers = db.Beers.ToList();
+            //st<Beer> beers = (IQueryable)db.Beers.ToList();
+            IQueryable<Beer> beers = db.Beers;
+            if (!string.IsNullOrEmpty(toSearch))
+                beers = beers.Where(beer => beer.Name.Contains(toSearch));
             ViewData["NameSort"] = sortOrder == SortState.NameAsc ? SortState.NameDesc : SortState.NameAsc;
             ViewData["PriceSort"] = sortOrder == SortState.PriceAsc ? SortState.PriceDesc : SortState.PriceAsc;
             var sortedBeers = sortOrder switch

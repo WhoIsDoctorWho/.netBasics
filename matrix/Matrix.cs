@@ -1,19 +1,21 @@
 using System;
+using Newtonsoft.Json;
 
 namespace matrix
 {
     public class Matrix
     {
-        public int[,] matrix;
+        public int[,] matrix { get; set; }
         public int _rows { get; }
         public int _columns { get; }
         public delegate int Operation(int a, int b);
-        public Matrix(int rows, int columns, bool isRandom)
+       
+        public Matrix(int _rows, int _columns, bool isRandom)
         {
-            if (rows <= 0 || columns <= 0)
+            if (_rows <= 0 || _columns <= 0)
                 throw new IndexOutOfRangeException("Sizes of matrix must be greater then zero!");
-            _rows = rows;
-            _columns = columns;
+            this._rows = _rows;
+            this._columns = _columns;
             if(isRandom)
                 CreateRandomMatrix();
             else

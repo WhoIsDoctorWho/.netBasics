@@ -1,12 +1,13 @@
-﻿
+﻿@using BeerStore.Models
+@model ProductViewModel
 @{
     ViewData["Title"] = "_FilterEntity";
 }
 
-<a asp-action="Beers" asp-route-sortOrder="@ViewBag.NameSort">
+<a asp-action="Beers" asp-route-sortOrder="@Model.Sort.NameSort" asp-route-name="@Model.Filter.SearchString">
     By name
 </a>    
-<a asp-action="Beers" asp-route-sortOrder="@ViewBag.PriceSort">
+<a asp-action="Beers" asp-route-sortOrder="@Model.Sort.PriceSort" asp-route-name="@Model.Filter.SearchString">
     By price
 </a>
 

@@ -1,4 +1,5 @@
-﻿@model List<Beer>
+﻿@using BeerStore.Models
+@model ProductViewModel
 @{
     ViewData["Title"] = "Beers";
 }
@@ -9,7 +10,7 @@
     <br>
     <h1 class="text-center">Production</h1>
     <div class="row text-center mb-5">
-        @foreach (Beer beer in Model)
+        @foreach (Beer beer in Model.Beers)
         {
 
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
@@ -25,3 +26,23 @@
         }
     </div>
 </div>
+@if (Model.Pagination.HasPrevPage)
+{
+    <a asp-action="Beers"
+       asp-route-page="@(Model.Pagination.PageNumber - 1)"
+       asp-route-name="@(Model.Filter.SearchString)"       
+       asp-route-sortorder="@(Model.Sort.Current)"
+       class="btn  btn-outline-dark">        
+        Previous
+    </a>
+}
+@if (Model.Pagination.HasNextPage)
+{
+    <a asp-action="Beers"
+       asp-route-page="@(Model.Pagination.PageNumber + 1)"
+       asp-route-name="@(Model.Filter.SearchString)"       
+       asp-route-sortorder="@(Model.Sort.Current)"
+       class="btn btn-outline-dark">
+        Next
+    </a>
+}

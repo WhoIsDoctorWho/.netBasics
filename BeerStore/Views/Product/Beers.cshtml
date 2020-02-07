@@ -26,22 +26,22 @@
         }
     </div>
 </div>
-@if (Model.Pagination.HasPrevPage)
+@if (Model.PaginationModel.HasPrevPage)
 {
     <a asp-action="Beers"
-       asp-route-page="@(Model.Pagination.PageNumber - 1)"
-       asp-route-name="@(Model.Filter.SearchString)"       
-       asp-route-sortorder="@(Model.Sort.Current)"
+       asp-route-page="@(Model.PaginationModel.PageNumber - 1)"
+       asp-route-tosearch="@(Model.FilterModel.ToSearch)"       
+       asp-route-sortorder="@(Model.SortModel.Current)"
        class="btn  btn-outline-dark">        
         Previous
     </a>
 }
-@if (Model.Pagination.HasNextPage)
+@if (Model.PaginationModel.HasNextPage)
 {
     <a asp-action="Beers"
-       asp-route-page="@(Model.Pagination.PageNumber + 1)"
-       asp-route-name="@(Model.Filter.SearchString)"       
-       asp-route-sortorder="@(Model.Sort.Current)"
+       asp-route-page="@(Model.PaginationModel.PageNumber + 1)"
+       asp-route-tosearch="@(Model.FilterModel.ToSearch)"       
+       asp-route-sortorder="@(Model.SortModel.Current)"
        class="btn btn-outline-dark">
         Next
     </a>

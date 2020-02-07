@@ -7,10 +7,10 @@ namespace BeerStore.Models
 {
     public class FilterViewModel
     {
-        public string SearchString { get; private set; }
-        public FilterViewModel(string searchString)
+        public string ToSearch { get; private set; }
+        public FilterViewModel(string toSearch)
         {
-            SearchString = searchString;
+            ToSearch = toSearch;
         }
 
     }

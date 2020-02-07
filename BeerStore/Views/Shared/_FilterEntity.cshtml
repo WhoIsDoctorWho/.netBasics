@@ -4,10 +4,10 @@
     ViewData["Title"] = "_FilterEntity";
 }
 
-<a asp-action="Beers" asp-route-sortOrder="@Model.Sort.NameSort" asp-route-name="@Model.Filter.SearchString">
+<a asp-action="Beers" asp-route-sortOrder="@Model.SortModel.NameSort" asp-route-tosearch="@Model.FilterModel.ToSearch">
     By name
 </a>    
-<a asp-action="Beers" asp-route-sortOrder="@Model.Sort.PriceSort" asp-route-name="@Model.Filter.SearchString">
+<a asp-action="Beers" asp-route-sortOrder="@Model.SortModel.PriceSort" asp-route-tosearch="@Model.FilterModel.ToSearch">
     By price
 </a>
 

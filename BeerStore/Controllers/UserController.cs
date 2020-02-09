@@ -19,10 +19,12 @@ namespace BeerStore.Controllers
             db = context;
             env = appEnvironment;
         }
-        public IActionResult Users(int ? id)
+        public IActionResult Users(int ? id, DisplayParams displayParams)
         {
-            var x = db.Users.Find(id);
-            return id == null ? View(db.Users.ToList()) : View("User", db.Users.Find(id));
+            if (id != null)
+                return View("User", db.Users.Find(id));
+            UserViewModel model = new UserViewModel(db.Users, displayParams);
+            return View(model);
         }
         [HttpGet]
         public IActionResult Register()

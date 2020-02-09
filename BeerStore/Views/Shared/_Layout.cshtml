@@ -1,6 +1,4 @@
-﻿@using BeerStore.Models
-@model ProductViewModel
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -21,11 +19,7 @@
                     <li class="list-inline-item"><a href="~/User/Users" class="navbar-brand">Users</a></li>
                     <li class="list-inline-item"><a href="~/User/Register" class="navbar-brand">Register</a></li>
                 </ul>
-            </div>
-            <form method="get" class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" name="toSearch" value="@Model.FilterModel.ToSearch" placeholder="Find beer" aria-label="Search">
-                <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
-            </form>
+            </div>            
         </div>
     </nav>
     <!--основной контент-->

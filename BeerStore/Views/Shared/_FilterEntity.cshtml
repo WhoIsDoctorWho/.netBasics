@@ -3,11 +3,14 @@
 @{
     ViewData["Title"] = "_FilterEntity";
 }
-
+<form method="get" class="form-inline my-2 my-lg-0">
+    <input class="form-control mr-sm-2" name="toSearch" value="@Model.FilterModel.ToSearch" placeholder="Find beer" aria-label="Search">
+    <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+</form>
 <a asp-action="Beers" asp-route-sortOrder="@Model.SortModel.NameSort" asp-route-tosearch="@Model.FilterModel.ToSearch">
     By name
 </a>    
-<a asp-action="Beers" asp-route-sortOrder="@Model.SortModel.PriceSort" asp-route-tosearch="@Model.FilterModel.ToSearch">
+<a asp-action="Beers" asp-route-sortOrder="@Model.SortModel.BeerPriceSort" asp-route-tosearch="@Model.FilterModel.ToSearch">
     By price
 </a>
 

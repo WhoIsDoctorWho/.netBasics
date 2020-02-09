@@ -29,15 +29,15 @@ namespace BeerStore.Models
             Beers = sortOrder switch
             {
                 SortState.NameDesc => Beers.OrderByDescending(beer => beer.Name),
-                SortState.PriceAsc => Beers.OrderBy(beer => beer.Price),
-                SortState.PriceDesc => Beers.OrderByDescending(beer => beer.Price),
+                SortState.BeerPriceAsc => Beers.OrderBy(beer => beer.Price),
+                SortState.BeerPriceDesc => Beers.OrderByDescending(beer => beer.Price),
                 _ => Beers.OrderBy(beer => beer.Name),
             };
             SortModel = new SortViewModel(sortOrder);
         }
         private void Pagination(int page)
         {
-            const int pageSize = 4;
+            const int pageSize = 8;
             int count = Beers.Count();
             Beers = Beers.Skip((page - 1) * pageSize).Take(pageSize).ToList();
             PaginationModel = new PaginationViewModel(count, page, pageSize);                

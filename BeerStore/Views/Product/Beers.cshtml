@@ -17,7 +17,7 @@
                 <div class="row">
                     <img src="@beer.ImageUrl" width="320" height="280" class="mx-auto rounded" alt="beer image">
                     <div class="col-12">
-                        <a href="" class="text-info">
+                        <a asp-action="Beers" asp-route-id="@beer.id" class="text-info">
                             <b>@beer.Name</b> - @beer.Price
                         </a>
                     </div>

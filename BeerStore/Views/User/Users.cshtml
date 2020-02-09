@@ -1,12 +1,56 @@
-﻿@model List<User>
+﻿@model UserViewModel
 @{
     ViewData["Title"] = "Users";
 }
 
-<h1>Users</h1>
-@foreach (User user in Model)
+<form method="get" class="form-inline my-2 my-lg-0">
+    <input class="form-control mr-sm-2" name="toSearch" value="@Model.FilterModel.ToSearch" placeholder="Find beer" aria-label="Search">
+    <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+</form>
+<a asp-action="Users" asp-route-sortOrder="@Model.SortModel.NameSort" asp-route-tosearch="@Model.FilterModel.ToSearch">
+    By name
+</a>
+<a asp-action="Users" asp-route-sortOrder="@Model.SortModel.UserLoginSort" asp-route-tosearch="@Model.FilterModel.ToSearch">
+    By login
+</a>
+
+<div class="container-fluid">
+    <br>
+    <h1 class="text-center">Users</h1>
+    <div class="row text-center mb-5">
+        @foreach (User user in Model.Users)
+        {
+
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="row">
+                    <img src="@user.AvaUrl" width="320" height="280" class="mx-auto rounded" alt="user avatar">
+                    <div class="col-12">
+                        <a asp-action="Users" asp-route-id="@user.id" class="text-info">
+                            <b>@user.Login</b> - @user.Fullname
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+@if (Model.PaginationModel.HasPrevPage)
 {
-    <h2>@user.Fullname</h2>
-    <p>@user.Registered</p>    
-    <img src="@user.AvaUrl" alt="user photo" />
+    <a asp-action="Users"
+       asp-route-page="@(Model.PaginationModel.PageNumber - 1)"
+       asp-route-tosearch="@(Model.FilterModel.ToSearch)"
+       asp-route-sortorder="@(Model.SortModel.Current)"
+       class="btn  btn-outline-dark">
+        Previous
+    </a>
+}
+@if (Model.PaginationModel.HasNextPage)
+{
+    <a asp-action="Users"
+       asp-route-page="@(Model.PaginationModel.PageNumber + 1)"
+       asp-route-tosearch="@(Model.FilterModel.ToSearch)"
+       asp-route-sortorder="@(Model.SortModel.Current)"
+       class="btn btn-outline-dark">
+        Next
+    </a>
 }

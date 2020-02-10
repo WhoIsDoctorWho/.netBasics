@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using BeerStore.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,6 +15,7 @@ namespace BeerStore.Controllers
         {
             db = context;
         }        
+        [Authorize]
         public IActionResult Beers(int ? id, DisplayParams displayParams)
         {
             if(id != null)

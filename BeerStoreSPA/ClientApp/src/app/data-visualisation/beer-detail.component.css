@@ -1,0 +1,25 @@
+﻿@media screen and (min-width: 980px) /* Desktop */ {
+    img {
+        height: 90vh;
+    }
+}
+
+@media screen and (max-width: 979px) /* Tablet */ {
+    img {
+        height: 60vh;
+    }
+}
+
+@media screen and (max-width: 500px) /* Mobile */ {
+    img {
+        height: 50vh;
+    }
+}
+    
+.beer-info p {
+    font-size: 2rem;
+}
+
+.beer-info h1 {
+    font-size: 4rem;
+}

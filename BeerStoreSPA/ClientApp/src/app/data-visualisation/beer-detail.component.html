@@ -1,0 +1,15 @@
+﻿<div *ngIf="loaded" class="container">
+    <div class="row justify-content-around">
+        <div class="col-md-4 col-sm-4 col-xs-12">
+            <img src="{{beer.imageUrl}}" alt="Photo of {{beer.name}}" class="mx-auto d-block"/>
+        </div>        
+        <div class="col-md-6 col-sm-4 col-xs-12 text-center my-auto beer-info">            
+            <h1><b>{{beer.name}}</b></h1>
+            <p><b>Количество:</b> {{beer.amount}}шт.</p>
+            <p><b>Цена:</b> {{beer.price}}₴</p>
+            <p><a routerLink="/" class="nav-link">К списку товара</a></p>
+            <a [routerLink]="['/edit', beer.id]" class="btn btn-info">Изменить</a>
+            <a routerLink="/" class="nav-link btn btn-danger" (click)="delete()">Удалить</a>            
+        </div>
+    </div>
+</div>

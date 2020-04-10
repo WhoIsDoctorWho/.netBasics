@@ -1,0 +1,15 @@
+﻿#wrap {
+    min-height: 100%;
+}
+
+#main {
+    overflow: auto;
+    padding-bottom: 10vh; /* this needs to be bigger than footer height*/
+}
+
+.footer {
+    position: relative;
+    margin-top: -10vh; /* negative value of footer height */
+    height: 5vh;
+    clear: both;    
+}

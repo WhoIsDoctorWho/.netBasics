@@ -1,7 +1,7 @@
 ﻿import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../server-communication/data.service';
-import { Beer } from '../models/beer';
+import { Beer } from '../models/beer'; 
 
 @Component({
     templateUrl: './beer-create.component.html'

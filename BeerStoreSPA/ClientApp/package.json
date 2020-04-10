@@ -5,7 +5,7 @@
   "author": "Tymchenko Dmitriy",
   "scripts": {
     "ng": "ng",
-    "start": "node start-dotnet.js",
+    "start": "ng serve",
     "start:ng": "echo hello && ng serve",
     "build": "ng build"
   },
